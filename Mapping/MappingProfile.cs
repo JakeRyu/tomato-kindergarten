@@ -1,4 +1,5 @@
 using AutoMapper;
+using TomatoKindergarten.Controllers.Resources;
 using TomatoKindergarten.Core.Models;
 
 namespace TomatoKindergarten.Mapping
@@ -7,7 +8,7 @@ namespace TomatoKindergarten.Mapping
     {
         public MappingProfile()
         {
-            // CreateMap<Group, GroupResource>();
+             CreateMap<Group, GroupResource>();
         }
     }
 }

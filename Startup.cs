@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using TomatoKindergarten.Persistence;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
+using TomatoKindergarten.Core;
 
 namespace TomatoKindergarten
 {
@@ -26,6 +27,9 @@ namespace TomatoKindergarten
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddAutoMapper();
+            
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IGroupRepository, GroupRepository>();
             
             services.AddDbContext<AppDbContext>(options => 
                 options.UseSqlServer(Configuration.GetConnectionString("Default")));
