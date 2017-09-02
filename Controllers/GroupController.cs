@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
@@ -30,6 +31,13 @@ namespace TomatoKindergarten.Controllers
                 return NotFound();
 
             return Ok(Mapper.Map<Group, GroupResource>(group));
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllGroups()
+        {
+            var groups = await _groupRepo.GetAllGroups();
+            return Ok(Mapper.Map<IEnumerable<Group>, IEnumerable<GroupResource>>(groups));
         }
     }
 }

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using TomatoKindergarten.Core;
@@ -16,6 +17,11 @@ namespace TomatoKindergarten.Persistence
         public void Add(Group group)
         {
             _context.Groups.Add(group);
+        }
+
+        public async Task<IEnumerable<Group>> GetAllGroups()
+        {
+            return await _context.Groups.ToListAsync();
         }
 
         public async Task<Group> GetGroup(int id, bool includeRelated = true)
